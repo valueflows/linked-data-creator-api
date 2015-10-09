@@ -1,0 +1,13 @@
+{
+  "name": "linked-data-creator-api",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/valueflows/nodejs-linked-data-creator.git"
+  },
+  "dependencies": {
+    "async": "*",
+    "github": "^0.2.4",
+    "mongoose": "*",
+    "underscore": "*"
+  }
+}
