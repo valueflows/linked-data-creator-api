@@ -1,2 +1,3 @@
-# nodejs-linked-data-creator
-A nodejs library meant to act as an API between application development and open linked data storage using github and git
+# linked-data-creator-api
+
+Enable github as database for json-ld data, with an easy to use api for manipulating the open graph
