@@ -76,11 +76,10 @@ module.exports = {
     },
     get: function (id, callback) {
         function proceed (url) {
-            githubEntityGet(url, function (err, json) {
-                if (err) return callback(err);
-                var entity = new Entity(json);
-                callback(null, entity);
-            });
+            githubEntityGet({
+                url: url,
+                token: config.token,
+            }, callback);
         }
         if (urlOrId === 'url') proceed(id);
         else {

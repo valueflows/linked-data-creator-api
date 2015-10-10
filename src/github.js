@@ -39,5 +39,31 @@ module.exports = {
             }
         ], callback)
     },
-    getEntity: function () {}
+    getEntity: function (opts, callback) {
+        // in the future, make this
+        // work for more than github data
+        github.authenticate({
+            type: "token",
+            token: opts.token,
+        });
+        // opts.url should look like https://raw.githubusercontent.com/username/reponame/branchname/path/to/file
+        var
+          split = opts.url.split('/'),
+          user = split[3],
+          repo = split[4],
+          branch = split[5],
+          path = split.splice(6).join('/');
+
+        github.repos.getContent({
+            user: user,
+            repo: repo,
+            ref: branch,
+            path: path
+        }, function (err, json) {
+           if (err) return callback(err);
+
+           // todo: add try/catch
+           callback(null, new Entity(JSON.parse(json)));
+        });
+    }
 };
