@@ -21,8 +21,14 @@ Metamaps would write any of its 'topic' objects to the users own github account 
 # API
 Written in node.js callback style
 
+### connect
+Pass a mongo url, and wait for it to connect to the database. 
+
+### disconnect
+disconnects from the database
+
 ### configure
-Pass a github token, and a URL to access a mongo database at
+Pass a github token, and the username of the github user it belongs to
 
 ### search
 Find entities quickly by querying the mongo table of entities.
