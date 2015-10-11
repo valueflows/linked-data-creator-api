@@ -35,10 +35,11 @@ function saveEntityToDB (entity, callback) {
 module.exports = {
     configure: function (opts, callback) {
         config.token = opts.token;
-        config.dbUrl = opts.dbUrl;
         config.username = opts.username;
-        
-        mongoose.connect(opts.dbUrl);
+        callback();
+    },
+    connect: function(dbUrl, callback) {
+        mongoose.connect(dbUrl);
         db = mongoose.connection;
         db.on('error', function () { callback(new Error('error connecting to db')) });
         db.once('open', function () {
@@ -81,7 +82,7 @@ module.exports = {
                 token: config.token,
             }, callback);
         }
-        if (urlOrId === 'url') proceed(id);
+        if (urlOrId(id) === 'url') proceed(id);
         else {
             mEntity.findOne({ _id: id }, function (err, local) {
                 if (err || !local) return callback(err || new Error('no entity found'));

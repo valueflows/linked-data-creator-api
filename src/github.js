@@ -59,11 +59,17 @@ module.exports = {
             repo: repo,
             ref: branch,
             path: path
-        }, function (err, json) {
+        }, function (err, contents) {
            if (err) return callback(err);
 
-           // todo: add try/catch
-           callback(null, new Entity(JSON.parse(json)));
+           try {
+               var
+                 string = new Buffer(contents.content, 'base64').toString('ascii'),
+                 json = JSON.parse(string);
+               callback(null, new Entity(json));
+           } catch (err) {
+               callback(err);
+           }
         });
     }
 };
