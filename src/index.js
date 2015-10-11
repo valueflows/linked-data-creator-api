@@ -33,10 +33,9 @@ function saveEntityToDB (entity, callback) {
 }
 
 module.exports = {
-    configure: function (opts, callback) {
+    configure: function (opts) {
         config.token = opts.token;
         config.username = opts.username;
-        callback();
     },
     connect: function(dbUrl, callback) {
         mongoose.connect(dbUrl);
