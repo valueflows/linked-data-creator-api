@@ -1,9 +1,11 @@
 {
   "name": "linked-data-creator-api",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/valueflows/nodejs-linked-data-creator.git"
   },
+  "main": "src/index.js",
   "dependencies": {
     "async": "*",
     "github": "^0.2.4",
